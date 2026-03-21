@@ -16,8 +16,8 @@ function App() {
 
   return (
     <>
-      <header className="bg-lime-600 py-3">
-        <div className="max-w-4xl mx-auto flex justify-between items-center"> 
+      <header className="bg-lime-600 py-3 ">
+        <div className="max-w-4xl mx-auto flex flex-col items-center gap-3 sm:flex-row sm:justify-between"> 
           <h1 className="text-center text-lg font-bold text-white uppercase"> contador de calorias</h1>
           <button className="bg-gray-800 hover:bg-gray-500 p-3.5 font-bold uppercase text-white cursor-pointer rounded-lg text-sm disabled:opacity-10"
           disabled={!restarApp}
