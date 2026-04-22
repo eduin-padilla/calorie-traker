@@ -1,28 +1,21 @@
 
-
-import type { Activity } from "../types"
-import {categories} from "../data/categories"
-import React, { useMemo } from "react"
 import { PencilSquareIcon, XCircleIcon } from '@heroicons/react/24/outline'
-import type { ActivityActions } from "../reducers/ActivityReducer"
 
-type ActivityListProps = {
+import {useActivity} from "../hook/useActivity"
 
-    activities: Activity[],
-    dispatch: React.Dispatch<ActivityActions>
 
-}
 
-export default function ActivityList({activities, dispatch} : ActivityListProps) {
-    
-    const categoryName = useMemo(() => (category : Activity['category']) => categories.map(cat => cat.id === category ? cat.name : ''), [])
+
+export default function ActivityList() {
+
+    const { state, dispatch, categoryName, isEmptyActivies } = useActivity()
 
     return (
         <>
         <h2 className="text-4xl font-bold text-slate-600 text-center">
             Comida y actividades</h2>           
-
-            {activities.map( activity => (
+            {isEmptyActivies ? <p className="text-center text-gray-500 mt-5">No hay actividades registradas</p> :
+            state.activities.map( activity => (
                 <div key={activity.id} className="px-5 py-10 bg-white mt-5 flex justify-between">
 
                     <div className="space-y-2 relative">
